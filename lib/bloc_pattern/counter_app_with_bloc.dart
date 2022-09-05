@@ -29,13 +29,7 @@ class CounterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter BLoC pattern')),
       // react to state changes with BlocBuilder (rebuild the widget in response to new states)
-      body: BlocBuilder<CounterCubit, int>(
-        builder: (context, count) => Center(
-            child: Text(
-          '$count',
-          style: Theme.of(context).textTheme.headline4,
-        )),
-      ),
+      body: const CounterWidget(),
       floatingActionButton: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -51,6 +45,32 @@ class CounterPage extends StatelessWidget {
             child: const Icon(Icons.remove),
             onPressed: () => context.read<CounterCubit>().decrement(),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class CounterWidget extends StatelessWidget {
+  const CounterWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'You have pushed the button this many times:',
+          ),
+          BlocBuilder<CounterCubit, int>(
+            builder: (context, count) => Center(
+                child: Text(
+              '$count',
+              style: Theme.of(context).textTheme.headline4,
+            )),
+          ),
+          ElevatedButton(onPressed: context.read<CounterCubit>().increment, child: const Text('Press me!'))
         ],
       ),
     );
