@@ -13,7 +13,7 @@ class CounterWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('You have pushed the button this many times:'),
+          const Text('InheritedWidget => Model:'),
           Text('${state.counter}', style: Theme.of(context).textTheme.headline4),
           ElevatedButton(onPressed: state.incrementCounter, child: const Text('Press me!'))
         ],

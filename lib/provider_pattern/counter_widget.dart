@@ -12,7 +12,7 @@ class CounterWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('You have pushed the button this many times:'),
+          const Text('Provider => Model:'),
           Text('${context.watch<CounterModel>().counter}', style: Theme.of(context).textTheme.headline4),
           ElevatedButton(onPressed: context.read<CounterModel>().increment, child: const Text('Press me!'))
         ],

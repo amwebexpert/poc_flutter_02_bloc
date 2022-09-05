@@ -12,7 +12,7 @@ class CounterWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('You have pushed the button this many times:'),
+          const Text('BLoC => Model:'),
           BlocBuilder<CounterModel, int>(
             builder: (context, count) {
               return Center(child: Text('$count', style: Theme.of(context).textTheme.headline4));
