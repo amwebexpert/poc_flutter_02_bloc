@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'conter_app_with_inherited_widget.dart';
+import 'my_inherited_widget.dart';
 
 class CounterWidget extends StatelessWidget {
   const CounterWidget({Key? key}) : super(key: key);
