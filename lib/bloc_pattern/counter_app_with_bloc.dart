@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'counter.cubit.dart';
+import 'counter_widget.dart';
 
 class CounterAppWithBloc extends StatelessWidget {
   const CounterAppWithBloc({
@@ -35,42 +36,14 @@ class CounterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
+            onPressed: context.read<CounterCubit>().increment,
             child: const Icon(Icons.add),
-            // CounterPage widget knows nothing about what happens when a user taps the buttons
-            // The widget simply notifies the CounterCubit that the user has triggered increment action
-            onPressed: () => context.read<CounterCubit>().increment(),
           ),
           const SizedBox(height: 4),
           FloatingActionButton(
+            onPressed: context.read<CounterCubit>().decrement,
             child: const Icon(Icons.remove),
-            onPressed: () => context.read<CounterCubit>().decrement(),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class CounterWidget extends StatelessWidget {
-  const CounterWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          BlocBuilder<CounterCubit, int>(
-            builder: (context, count) => Center(
-                child: Text(
-              '$count',
-              style: Theme.of(context).textTheme.headline4,
-            )),
-          ),
-          ElevatedButton(onPressed: context.read<CounterCubit>().increment, child: const Text('Press me!'))
         ],
       ),
     );

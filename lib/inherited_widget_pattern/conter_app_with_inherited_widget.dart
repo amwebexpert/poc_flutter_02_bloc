@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'counter_widget.dart';
+
 class MyInheritedWidget extends InheritedWidget {
   final CounterPageState state;
 
@@ -17,19 +19,14 @@ class CounterAppWithInheritedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CounterPage(title: 'Flutter Demo Home Page'),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const CounterPage(),
     );
   }
 }
 
 class CounterPage extends StatefulWidget {
-  const CounterPage({super.key, required this.title});
-
-  final String title;
+  const CounterPage({super.key});
 
   @override
   State<CounterPage> createState() => CounterPageState();
@@ -39,44 +36,17 @@ class CounterPageState extends State<CounterPage> {
   int counter = 0;
 
   void incrementCounter() {
-    setState(() {
-      counter++;
-    });
+    setState(() => counter++);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: const Text('Counter Inherited Widget pattern')),
       body: MyInheritedWidget(state: this, child: const CounterWidget()),
       floatingActionButton: FloatingActionButton(
         onPressed: incrementCounter,
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class CounterWidget extends StatelessWidget {
-  const CounterWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final state = context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>()!.state;
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            '${state.counter}',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          ElevatedButton(onPressed: state.incrementCounter, child: const Text('Press me!'))
-        ],
       ),
     );
   }
