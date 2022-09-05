@@ -12,6 +12,7 @@ class CounterAppWithBloc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.red),
       // this provides a CounterCubit to the CounterPage
       home: BlocProvider(
         lazy: true,
