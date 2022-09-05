@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poc_flutter_02_bloc/provider_pattern/counter.state.dart';
+import 'package:poc_flutter_02_bloc/provider_pattern/counter.model.dart';
 import 'package:provider/provider.dart';
 
 import 'counter_widget.dart';
@@ -17,12 +17,12 @@ class CounterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: context.read<CounterState>().increment,
+            onPressed: context.read<CounterModel>().increment,
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 4),
           FloatingActionButton(
-            onPressed: context.read<CounterState>().decrement,
+            onPressed: context.read<CounterModel>().decrement,
             child: const Icon(Icons.remove),
           ),
         ],

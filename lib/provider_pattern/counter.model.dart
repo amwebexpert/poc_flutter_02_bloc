@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CounterState with ChangeNotifier {
+class CounterModel with ChangeNotifier {
   int counter = 0;
 
   void increment() {
-    counter = counter + 1;
+    counter++;
     notifyListeners();
   }
 
   void decrement() {
-    counter = counter - 1;
+    counter--;
     notifyListeners();
   }
 }

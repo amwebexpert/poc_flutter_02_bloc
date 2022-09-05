@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter.cubit.dart';
+import 'counter.model.dart';
 
 class CounterWidget extends StatelessWidget {
   const CounterWidget({Key? key}) : super(key: key);
@@ -13,12 +13,12 @@ class CounterWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('You have pushed the button this many times:'),
-          BlocBuilder<CounterCubit, int>(
+          BlocBuilder<CounterModel, int>(
             builder: (context, count) {
               return Center(child: Text('$count', style: Theme.of(context).textTheme.headline4));
             },
           ),
-          ElevatedButton(onPressed: context.read<CounterCubit>().increment, child: const Text('Press me!'))
+          ElevatedButton(onPressed: context.read<CounterModel>().increment, child: const Text('Press me!'))
         ],
       ),
     );

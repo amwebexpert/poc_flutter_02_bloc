@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter.cubit.dart';
+import 'counter.model.dart';
 import 'counter_page.dart';
 
 class CounterAppWithBloc extends StatelessWidget {
@@ -16,7 +16,7 @@ class CounterAppWithBloc extends StatelessWidget {
       // this provides a CounterCubit to the CounterPage
       home: BlocProvider(
         lazy: true,
-        create: (_) => CounterCubit(),
+        create: (_) => CounterModel(),
         child: const CounterPage(),
       ),
     );

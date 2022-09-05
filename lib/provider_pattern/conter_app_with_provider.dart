@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'counter.state.dart';
+import 'counter.model.dart';
 import 'counter_page.dart';
 
 class CounterAppWithProvider extends StatelessWidget {
@@ -10,9 +10,9 @@ class CounterAppWithProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => CounterState(),
+      create: (_) => CounterModel(),
       child: MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.green),
+        theme: ThemeData(primarySwatch: Colors.yellow),
         home: const CounterPage(),
       ),
     );

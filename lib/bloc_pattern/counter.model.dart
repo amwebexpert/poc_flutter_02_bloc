@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 
 /// A `CounterCubit` which manages an `int` as its state.
-class CounterCubit extends Cubit<int> {
+class CounterModel extends Cubit<int> {
   /// The initial state of the `CounterCubit` is 0.
-  CounterCubit() : super(0);
+  CounterModel() : super(0);
 
   /// When increment is called, the current state
   /// of the cubit is accessed via `state` and

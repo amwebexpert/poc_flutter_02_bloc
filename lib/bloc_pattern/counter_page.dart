@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter.cubit.dart';
+import 'counter.model.dart';
 import 'counter_widget.dart';
 
 class CounterPage extends StatelessWidget {
@@ -18,12 +18,12 @@ class CounterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: context.read<CounterCubit>().increment,
+            onPressed: context.read<CounterModel>().increment,
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 4),
           FloatingActionButton(
-            onPressed: context.read<CounterCubit>().decrement,
+            onPressed: context.read<CounterModel>().decrement,
             child: const Icon(Icons.remove),
           ),
         ],
