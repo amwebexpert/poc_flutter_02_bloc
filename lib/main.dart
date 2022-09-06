@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poc_flutter_02_bloc/stream_synk_listener/demo.dart';
-
-import 'provider_pattern/conter_app_with_provider.dart';
+import 'package:poc_flutter_02_bloc/stream_synk_listener/counter_app_stream_controller.dart';
 
 void main() {
   // runApp(const CounterAppWithProvider());
   // runApp(const CounterAppWithBloc());
   // runApp(const CounterAppWithInheritedWidget());
-  runApp(const CounterAppStreamDemo());
+  runApp(const CounterAppStreamController());
 }
