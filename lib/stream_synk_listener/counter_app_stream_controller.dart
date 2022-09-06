@@ -15,6 +15,9 @@ class CounterAppStreamController extends StatefulWidget {
 
 class _CounterAppStreamControllerState extends State<CounterAppStreamController> {
   final StreamController<int> _counterStreamController = StreamController<int>.broadcast();
+  final StreamController<int> _incrementStreamController = StreamController<int>();
+
+  Sink<int> get incrementEventSynk => _incrementStreamController.sink;
   Stream<int> get countStream => _counterStreamController.stream;
 
   @override
@@ -24,6 +27,10 @@ class _CounterAppStreamControllerState extends State<CounterAppStreamController>
     _counterStreamController.onListen = () {
       _counterStreamController.add(0);
     };
+
+    _incrementStreamController.stream.listen((event) {
+      _counterStreamController.add(event);
+    });
   }
 
   @override
@@ -33,6 +40,7 @@ class _CounterAppStreamControllerState extends State<CounterAppStreamController>
         appBar: AppBar(title: const Text('Stream demo')),
         body: StreamBuilder<int>(
             stream: countStream,
+            initialData: 0,
             builder: (context, snapshot) {
               final count = snapshot.data ?? 0;
               return Column(
@@ -40,7 +48,7 @@ class _CounterAppStreamControllerState extends State<CounterAppStreamController>
                 children: [
                   Center(child: Text('Counter: $count')),
                   ElevatedButton(
-                      onPressed: () => _counterStreamController.add(count + 5), child: const Text('Increment'))
+                      onPressed: () => incrementEventSynk.add(count + 5), child: const Text('Increment'))
                 ],
               );
             }),
