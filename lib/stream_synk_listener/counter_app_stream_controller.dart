@@ -6,14 +6,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class CounterAppStreamDemo extends StatefulWidget {
-  const CounterAppStreamDemo({super.key});
+class CounterAppStreamController extends StatefulWidget {
+  const CounterAppStreamController({super.key});
 
   @override
-  State<CounterAppStreamDemo> createState() => _CounterAppStreamDemoState();
+  State<CounterAppStreamController> createState() => _CounterAppStreamControllerState();
 }
 
-class _CounterAppStreamDemoState extends State<CounterAppStreamDemo> {
+class _CounterAppStreamControllerState extends State<CounterAppStreamController> {
   int counter = 0;
   StreamController<int> counterStreamController = StreamController<int>();
 
