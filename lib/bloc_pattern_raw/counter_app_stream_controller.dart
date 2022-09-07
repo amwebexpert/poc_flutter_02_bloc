@@ -33,7 +33,9 @@ class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
                 children: [
                   Center(child: Text('Counter: $count')),
                   ElevatedButton(
-                      onPressed: () => bloc.counterEventSync.add(IncrementEvent()), child: const Text('Increment'))
+                      onPressed: () => bloc.counterEventSync.add(IncrementEvent()), child: const Text('Increment')),
+                  ElevatedButton(
+                      onPressed: () => bloc.counterEventSync.add(DecrementEvent()), child: const Text('Decrement'))
                 ],
               );
             }),
