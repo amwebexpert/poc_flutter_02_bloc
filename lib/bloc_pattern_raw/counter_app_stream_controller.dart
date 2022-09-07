@@ -13,16 +13,16 @@ class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
   final CounterBloc bloc = CounterBloc();
 
   @override
-  void initState() {
-    super.initState();
-
+  void dispose() {
+    super.dispose();
+    bloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Stream demo')),
+        appBar: AppBar(title: const Text('Raw Bloc demo')),
         body: StreamBuilder<int>(
             stream: bloc.counter,
             initialData: 0,
