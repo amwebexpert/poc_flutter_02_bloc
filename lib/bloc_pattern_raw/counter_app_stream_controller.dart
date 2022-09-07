@@ -10,12 +10,12 @@ class CounterAppWithRawBloc extends StatefulWidget {
 }
 
 class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
-  final CounterBloc bloc = CounterBloc();
+  final CounterBloc _bloc = CounterBloc();
 
   @override
   void dispose() {
     super.dispose();
-    bloc.dispose();
+    _bloc.dispose();
   }
 
   @override
@@ -24,18 +24,17 @@ class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
       home: Scaffold(
         appBar: AppBar(title: const Text('Raw Bloc demo')),
         body: StreamBuilder<int>(
-            stream: bloc.counter,
+            stream: _bloc.counter,
             initialData: 0,
             builder: (context, snapshot) {
-              final count = snapshot.data ?? 0;
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(child: Text('Counter: $count')),
+                  Center(child: Text('Counter: ${snapshot.data}')),
                   ElevatedButton(
-                      onPressed: () => bloc.counterEventSync.add(IncrementEvent()), child: const Text('Increment')),
+                      onPressed: () => _bloc.counterEventSync.add(IncrementEvent()), child: const Text('Increment')),
                   ElevatedButton(
-                      onPressed: () => bloc.counterEventSync.add(DecrementEvent()), child: const Text('Decrement'))
+                      onPressed: () => _bloc.counterEventSync.add(DecrementEvent()), child: const Text('Decrement'))
                 ],
               );
             }),
