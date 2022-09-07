@@ -10,7 +10,10 @@ class CounterModel extends Cubit<int> {
   /// a new `state` is emitted via `emit`.
   void increment() => emit(state + 1);
 
-  void decrement() => emit(state - 1);
+  Future<void> decrement() async {
+    await Future.delayed(const Duration(seconds: 2));
+    emit(state - 1);
+  }
 
   @override
   void onChange(Change<int> change) {
