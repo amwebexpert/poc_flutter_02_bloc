@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'counter_events.dart';
-import 'counter_bloc.dart';
+import 'counter.model.dart';
 
 class CounterAppWithRawBloc extends StatefulWidget {
   const CounterAppWithRawBloc({super.key});
@@ -10,12 +10,12 @@ class CounterAppWithRawBloc extends StatefulWidget {
 }
 
 class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
-  final CounterBloc _bloc = CounterBloc();
+  final CounterModel _counterModel = CounterModel();
 
   @override
   void dispose() {
     super.dispose();
-    _bloc.dispose();
+    _counterModel.dispose();
   }
 
   @override
@@ -24,7 +24,7 @@ class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
       home: Scaffold(
         appBar: AppBar(title: const Text('Raw Bloc demo')),
         body: StreamBuilder<int>(
-            stream: _bloc.counter,
+            stream: _counterModel.counter,
             initialData: 0,
             builder: (context, snapshot) {
               return Column(
@@ -32,9 +32,9 @@ class _CounterAppWithRawBlocState extends State<CounterAppWithRawBloc> {
                 children: [
                   Center(child: Text('Counter: ${snapshot.data}')),
                   ElevatedButton(
-                      onPressed: () => _bloc.counterEventSync.add(IncrementEvent()), child: const Text('Increment')),
+                      onPressed: () => _counterModel.counterEventSync.add(IncrementEvent()), child: const Text('Increment')),
                   ElevatedButton(
-                      onPressed: () => _bloc.counterEventSync.add(DecrementEvent()), child: const Text('Decrement'))
+                      onPressed: () => _counterModel.counterEventSync.add(DecrementEvent()), child: const Text('Decrement'))
                 ],
               );
             }),

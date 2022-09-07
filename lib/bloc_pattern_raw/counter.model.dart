@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'counter_events.dart';
 
-class CounterBloc {
+class CounterModel {
   int _counter = 0;
 
   // ========================
@@ -21,8 +21,8 @@ class CounterBloc {
   final _counterEventController = StreamController<CounterEvent>();
   Sink<CounterEvent> get counterEventSync => _counterEventController.sink;
 
-  // listen from events
-  CounterBloc() {
+  CounterModel() {
+    // listen from events and map to model mutations
     _counterEventController.stream.listen(_mapEvent);
   }
 
